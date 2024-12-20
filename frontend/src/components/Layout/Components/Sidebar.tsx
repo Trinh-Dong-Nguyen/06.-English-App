@@ -1,4 +1,4 @@
-import { authApi } from "@/apis"
+// import { authApi } from "@/apis"
 import { FaRegCircleUser } from "react-icons/fa6"
 
 const Sidebar = () => {

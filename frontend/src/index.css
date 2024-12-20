@@ -44,6 +44,32 @@ body {
   position: relative;
 }
 
+* {
+  --sb-track-color: #ffffff;
+  --sb-thumb-color: #ef5da8;
+  --sb-size: 10px;
+}
+
+*::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 4px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  * {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
+}
+
 html {
   min-width: 100%;
 }
@@ -63,6 +89,7 @@ button {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
+  outline: none !important;
 }
 button:hover {
   border-color: #646cff;

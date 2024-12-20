@@ -1,12 +1,21 @@
 import { httpClient } from "@/services"
 
 interface User {
-  EM: string
-  EC: number
-  DT: {
+  statusCode: number
+  message: string
+  data: {
     id: string
-    username: string
-  }[]
+    role: string
+    firstName: string
+    lastName: string
+    email: string
+    phone: string
+    birthDate: string
+    avatarURL: null
+    additionalInfo: {
+      degree: string
+    }
+  }
 }
 
 class UserApi {
@@ -17,10 +26,12 @@ class UserApi {
     // })
   }
 
-  async getAllUser() {
+  async getUser() {
     // eslint-disable-next-line no-useless-catch
+    console.log("getUser")
     try {
-      const res = await httpClient.get<User>("/user")
+      console.log("getUser")
+      const res = await httpClient.get<User>("/user/me")
       return res
     } catch (error) {
       console.log(error)

@@ -4,9 +4,7 @@ on:
   push:
     branches:
       - main-frontend
-
 jobs:
- 
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
@@ -21,20 +19,22 @@ jobs:
       - name: Install dependencies
         run: |
           cd frontend
-          npm install
+          npm install --legacy-peer-deps 
 
       - name: Build React App
         run: |
           cd frontend
           npm run build
-
-      - uses: aws-actions/configure-aws-credentials@v1
+      - uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}J
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
       - name: Clean bucket before deploy
-        run: aws s3 rm --recursive s3://$S3_BUCKET
+        run: |
+          aws s3 rm --recursive s3://$S3_BUCKET
+        env:
+          S3_BUCKET: ${{ secrets.S3_BUCKET }}
       - name: Deploy to S3
         run: |
           cd frontend
@@ -51,5 +51,5 @@ jobs:
           PATHS: "/*"
           AWS_REGION: ${{ secrets.AWS_REGION }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_ARCTICFUNDING_SECRECT_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 

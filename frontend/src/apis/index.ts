@@ -1,2 +1,7 @@
-export { default as authApi } from "./authApi"
+// export { default as authApi } from "./authApi"
 export { default as userApi } from "./userApi"
+export { default as courseApi } from "./course"
+export { default as fileApi } from "./file"
+export { default as sectionApi } from "./sectionApi"
+export { default as grammarApi } from "./grammar"
+export { default as lessonApi } from "./lesson"

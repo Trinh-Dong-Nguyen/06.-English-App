@@ -6,6 +6,9 @@ const slice = createSlice({
   name: "user",
   initialState,
   reducers: {
+    updateHanding(state, action) {
+      state.handling = action.payload
+    },
     fetchUserInformation(state, action) {
       state.handling = false
       state.data = {

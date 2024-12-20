@@ -5,7 +5,7 @@ import GlobalStyles from "./components/GlobalStyles/index.ts"
 import "./index.css"
 import { Provider } from "react-redux"
 import { configureAppStore } from "./redux/configureStore.ts"
-
+import "regenerator-runtime/runtime"
 const store = configureAppStore()
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

@@ -38,6 +38,32 @@ body {
   position: relative;
 }
 
+body {
+  --sb-track-color: #ffffff;
+  --sb-thumb-color: #b177a2;
+  --sb-size: 10px;
+}
+
+body::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 4px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 4px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  body {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
+}
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
