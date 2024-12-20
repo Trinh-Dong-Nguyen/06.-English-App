@@ -216,7 +216,12 @@ export default function CourseCreate() {
                         </div>
                         <div className="flex w-full justify-center">
                           <button
-                            onClick={onImageRemoveAll}
+                            type="button"
+                            onClick={() => {
+                              console.log("onImageRemoveAll", onImageRemoveAll)
+                              onImageRemoveAll()
+                              setImages([])
+                            }}
                             className="mb-5 rounded-xl border bg-red-600 px-10 py-2 font-extralight text-white hover:bg-red-800 hover:text-white"
                           >
                             Remove
