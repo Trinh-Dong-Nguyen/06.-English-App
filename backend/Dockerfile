@@ -11,7 +11,6 @@ COPY --chown=node:node package*.json ./
 RUN npm ci
 
 COPY --chown=node:node . .
-
 USER node
 
 ###################
@@ -41,8 +40,9 @@ USER node
 ###################
 
 FROM node:20-alpine As production
-
+RUN npm install pm2@latest -g
 COPY --chown=node:node --from=build /usr/src/app/node_modules ./node_modules
+COPY --chown=node:node --from=build /usr/src/app/dist ./dist
+EXPOSE $PORT
 
-
-CMD [ "node", "dist/main.js" ]
+CMD ["pm2-runtime", "dist/main.js"]

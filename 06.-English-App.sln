@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "backend", "backend", "{85803980-5589-4A7A-80BE-98114F8D46C0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{75394280-1805-4D3D-AB00-5EE95D48B880}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{016CE705-30E6-48A1-A0CF-9CDF100600E7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscountService", "backend\src\services\DiscountService\DiscountService.csproj", "{7818E3CC-629B-4B7F-BFD1-038DF5E40616}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7818E3CC-629B-4B7F-BFD1-038DF5E40616}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7818E3CC-629B-4B7F-BFD1-038DF5E40616}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7818E3CC-629B-4B7F-BFD1-038DF5E40616}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7818E3CC-629B-4B7F-BFD1-038DF5E40616}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{75394280-1805-4D3D-AB00-5EE95D48B880} = {85803980-5589-4A7A-80BE-98114F8D46C0}
+		{016CE705-30E6-48A1-A0CF-9CDF100600E7} = {75394280-1805-4D3D-AB00-5EE95D48B880}
+		{7818E3CC-629B-4B7F-BFD1-038DF5E40616} = {016CE705-30E6-48A1-A0CF-9CDF100600E7}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CF0C5EA1-D07A-4702-A7F9-948309B7A4A4}
+	EndGlobalSection
+EndGlobal

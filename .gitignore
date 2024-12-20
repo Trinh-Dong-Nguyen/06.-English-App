@@ -404,3 +404,6 @@ dist
 .serverless/**/*.zip
 mobile/English-App/App.tsx
 mobile/English-App/src/services/config.ts
+bin
+obj
+*.sln

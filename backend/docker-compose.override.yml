@@ -1,0 +1,15 @@
+services:
+  api:
+    environment:
+      - GRPC_DISCOUNT_URL=discount-api:8080
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    env_file:
+      - /path/on/ec2/env
+  discount-api:
+    environment:
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ConnectionStrings__Database=Data Source=/app/data/discountdb
+      - ConnectionStrings__Redis=redis:6379
+    volumes:
+      - sqlite:/app/data
