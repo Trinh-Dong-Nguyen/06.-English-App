@@ -1,0 +1,33 @@
+services:
+  api:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    image: "${DOCKER_HUB_USERNAME}/nestjs-app:latest"
+    env_file:
+      - .env
+    ports:
+      - 3000:3000
+    depends_on:
+      - redis
+      - discount-api
+  discount-api:
+    build:
+      dockerfile: Dockerfile
+      context: ./src/services/DiscountService
+    image: "${DOCKER_HUB_USERNAME}/grpc-asp.net-discount-app:latest"
+    ports:
+      - 50051:8080
+    depends_on:
+      - redis
+  redis:
+    image: redis
+    ports:
+      - 6379:6379
+    volumes:
+      - redis:/data
+volumes:
+  redis:
+    driver: local
+  sqlite:
+    driver: local
