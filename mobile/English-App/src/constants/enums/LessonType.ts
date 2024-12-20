@@ -1,0 +1,10 @@
+enum LessonType {
+  LISTENING = "LISTENING",
+  READING = "READING",
+  WRITING = "WRITING",
+  SPEAKING = "SPEAKING",
+  GRAMMAR = "GRAMMAR",
+  VOCABULARY = "VOCABULARY",
+  VIDEO = "VIDEO",
+}
+export default LessonType;

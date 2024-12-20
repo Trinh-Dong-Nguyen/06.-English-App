@@ -33,3 +33,9 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+
+# Ignore the config.ts file
+src/services/config.ts
+
+
+%ProgramData%/

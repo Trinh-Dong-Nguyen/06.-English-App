@@ -1,0 +1,122 @@
+[
+  {
+    "id": "1a2b3c4d",
+    "text": "Artists in the German aesthetic tradition portrayed nature realistically.",
+    "options": ["True", "False", "Not Given"],
+    "answered": false
+  },
+  {
+    "id": "2b3c4d5e",
+    "text": "Margaret attended a famous art college in Paris.",
+    "options": ["True", "False", "Not Given"],
+    "answered": false
+  },
+  {
+    "id": "3c4d5e6f",
+    "text": "Margaret met her husband William while teaching a craft at a rehabilitation unit.",
+    "options": ["True", "False", "Not Given"],
+    "answered": false
+  },
+  {
+    "id": "4d5e6f7g",
+    "text": "Margaret Preston and Thea Proctor explored similar themes in their art.",
+    "options": ["True", "False", "Not Given"],
+    "answered": false
+  },
+  {
+    "id": "5e6f7g8h",
+    "text": "The artist's work was influenced by Japanese prints.",
+    "options": ["True", "False", "Not Given"],
+    "answered": false
+  },
+  {
+    "id": "6f7g8h9i",
+    "text": "The exhibition was held in New York.",
+    "options": ["True", "False", "Not Given"],
+    "answered": false
+  },
+  {
+    "id": "7g8h9i0j",
+    "text": "The artist's early works were primarily landscapes.",
+    "options": ["True", "False", "Not Given"],
+    "answered": false
+  },
+  {
+    "id": "8h9i0j1k",
+    "text": "The artist received formal training in Italy.",
+    "options": ["True", "False", "Not Given"],
+    "answered": false
+  },
+  {
+    "id": "9i0j1k2l",
+    "text": "The artist's work is characterized by vibrant colors.",
+    "options": ["True", "False", "Not Given"],
+    "answered": false
+  },
+  {
+    "id": "0j1k2l3m",
+    "text": "The artist's most famous work is a portrait of a woman.",
+    "options": ["True", "False", "Not Given"],
+    "answered": false
+  },
+  {
+    "id": "1k2l3m4n",
+    "text": "The artist's work was featured in a major museum.",
+    "options": ["True", "False", "Not Given"],
+    "answered": false
+  },
+  {
+    "id": "2l3m4n5o",
+    "text": "The artist's work was influenced by the Impressionist movement.",
+    "options": ["True", "False", "Not Given"],
+    "answered": false
+  },
+  {
+    "id": "3m4n5o6p",
+    "text": "The artist's work was primarily in black and white.",
+    "options": ["True", "False", "Not Given"],
+    "answered": false
+  },
+  {
+    "id": "4n5o6p7q",
+    "text": "The artist's work was inspired by nature.",
+    "options": ["True", "False", "Not Given"],
+    "answered": false
+  },
+  {
+    "id": "5o6p7q8r",
+    "text": "The artist's work was exhibited in Paris.",
+    "options": ["True", "False", "Not Given"],
+    "answered": false
+  },
+  {
+    "id": "6p7q8r9s",
+    "text": "The artist's work was influenced by the Renaissance.",
+    "options": ["True", "False", "Not Given"],
+    "answered": false
+  },
+  {
+    "id": "7q8r9s0t",
+    "text": "The artist's work was primarily abstract.",
+    "options": ["True", "False", "Not Given"],
+    "answered": false
+  },
+  {
+    "id": "8r9s0t1u",
+    "text": "The artist's work was influenced by the Baroque period.",
+    "options": ["True", "False", "Not Given"],
+    "answered": false
+  },
+  {
+    "id": "9s0t1u2v",
+    "text": "The artist's work was primarily in the form of sculptures.",
+    "options": ["True", "False", "Not Given"],
+    "answered": false
+  },
+  {
+    "id": "0t1u2v3w",
+    "text": "The artist's work was influenced by the Cubist movement.",
+    "options": ["True", "False", "Not Given"],
+    "answered": false
+  }
+]

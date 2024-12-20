@@ -18,10 +18,36 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.se214.englishapp",
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-font",
+      "expo-secure-store",
+      "expo-build-properties",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "extraMavenRepositories": [
+              "https://www.jitpack.io"
+            ]
+          }
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "c970716c-7e6a-47bb-95a0-a11d82432e3e"
+      }
     }
   }
 }
