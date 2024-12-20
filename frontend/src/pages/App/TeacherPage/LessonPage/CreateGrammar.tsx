@@ -17,7 +17,7 @@ export const CreateGrammar = () => {
   const { data: grammarList } = useGrammar()
   const { lessonId } = useParams()
   const [listGrammar, setListGrammar] = useState<string[]>([])
-  const { data: grammarByLesson } = useGrammarByLesson(lessonId as string)
+  const { data: grammarByLesson, isLoading } = useGrammarByLesson(lessonId as string)
   console.log("grammarByLesson", grammarByLesson)
   const CreateGrammar = useMutation({
     mutationFn: ({ lessonId, grammarIds }: { lessonId: string; grammarIds: string[] }) =>
@@ -47,7 +47,7 @@ export const CreateGrammar = () => {
   console.log("CreateGrammar", CreateGrammar.isPending)
   return (
     <div className="flex h-full min-h-screen w-full flex-col bg-white px-[66px] py-[64px]">
-      {CreateGrammar.isPending && <LoadingScreen />}
+      {(CreateGrammar.isPending || isLoading) && <LoadingScreen />}
       <div className="mb-[43px] flex flex-col rounded-md border-2 border-fuschia px-[78px] py-[56px]">
         <div className="flex w-full items-center justify-between">
           <Input

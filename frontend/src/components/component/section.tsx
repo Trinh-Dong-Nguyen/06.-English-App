@@ -17,6 +17,8 @@ import { toast } from "react-toastify"
 import { queryKeys } from "@/config"
 import S from "./style.module.css"
 import { useSectionSlice } from "@/features/section/store"
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { useState } from "react"
 interface question {
   questionGroup?: string
   section: string
@@ -45,6 +47,7 @@ interface updateData {
 export const Section = ({ onOpenDialog }: { onOpenDialog: () => void }) => {
   const dispatch = useDispatch()
   const { actions: sectionActions } = useSectionSlice()
+  const [open, setOpen] = useState(false)
   const queryClient = useQueryClient()
   const sectionById = useSelector(selectSections)
   const { sectionId } = useParams()
@@ -72,6 +75,16 @@ export const Section = ({ onOpenDialog }: { onOpenDialog: () => void }) => {
   Object.entries(section ?? {}).forEach(([key, value]) => console.log("section", key, " ", value))
   return (
     <div className="flex flex-col items-center bg-white">
+      <Dialog open={open} onOpenChange={() => setOpen(!open)}>
+        <DialogContent className="h-fit overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="text-black">Oops!!!</DialogTitle>
+          </DialogHeader>
+          <div className="flex items-center justify-center">
+            <span className="text-black">Save your changes before moving to another question group</span>
+          </div>
+        </DialogContent>
+      </Dialog>
       <div className="flex min-w-[439px] flex-col rounded-md border-2 border-borderContent bg-white p-[30px]">
         <div className="flex w-full items-center justify-between border-b-2 border-borderContent">
           <p className="w-full pb-3 text-[32px] text-content">Content</p>
@@ -134,7 +147,13 @@ export const Section = ({ onOpenDialog }: { onOpenDialog: () => void }) => {
               return (
                 <div
                   key={questionGr.id}
-                  onClick={() => dispatch(sectionActions.changeCurrentSection(questionGr.id))}
+                  onClick={() => {
+                    if (viewChange) {
+                      setOpen(true)
+                      return
+                    }
+                    dispatch(sectionActions.changeCurrentSection(questionGr.id))
+                  }}
                   className={`${sectionCurrent.toString() === questionGr.id ? "my-2 flex w-full cursor-pointer rounded-md bg-currentBg px-4 py-3 transition-all" : "my-2 flex w-full cursor-pointer bg-white px-4 py-3 transition-all hover:bg-fuchsia-200"}`}
                 >
                   <LuStar stroke="black" size={20} />
