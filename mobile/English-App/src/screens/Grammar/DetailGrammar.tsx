@@ -14,6 +14,8 @@ import { ActivityIndicator } from "react-native-paper";
 
 type DetailGrammarRouteProp = RouteProp<RootStackParamList, "GrammarDetail">;
 
+const { height, width } = Dimensions.get("window");
+
 export default function DetailGrammar() {
   const route = useRoute<DetailGrammarRouteProp>();
   const { id } = route.params;
@@ -61,23 +63,24 @@ export default function DetailGrammar() {
     }),
     input: HTMLElementModel.fromCustomModel({
       tagName: "input",
-      contentModel: HTMLContentModel.block, 
+      contentModel: HTMLContentModel.block,
     }),
   };
 
   return (
-    <ScrollView>
+    <ScrollView className="flex-1 w-full h-full justify-center items-center">
       {grammar ? (
-        <RenderHTML
-          contentWidth={width}
-          source={{ html: grammar.content || "" }}
-          customHTMLElementModels={customHTMLElementModels}
-          ignoredDomTags={[]} 
-        />
+        <View className="p-5">
+          <RenderHTML
+            contentWidth={width}
+            source={{ html: grammar.content || "" }}
+            customHTMLElementModels={customHTMLElementModels}
+            ignoredDomTags={[]}
+          />
+        </View>
       ) : (
-        <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-
-        <ActivityIndicator size={"large"}  />
+        <View className="flex-1 items-center justify-center w-full h-full">
+          <ActivityIndicator size={"large"} />
         </View>
       )}
     </ScrollView>

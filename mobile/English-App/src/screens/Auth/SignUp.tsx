@@ -34,20 +34,20 @@ const validationSchema = Yup.object().shape({
 });
 
 const SignUp = () => {
-  const [isSelected, setSelection] = useState(false);
-  const handleCheckBox = () => {
-    setSelection(!isSelected);
-    console.log(isSelected);
-  };
+  // const [isSelected, setSelection] = useState(false);
+  // const handleCheckBox = () => {
+  //   setSelection(!isSelected);
+  //   console.log(isSelected);
+  // };
   const loginNav = useNavigation<LoginScreenNavigationProp>();
   const otpVerifyNav = useNavigation<OTPVerificationScreenNavigationProp>();
 
   const handleSignUp = async (values: any) => {
     console.log(values);
-    if (!isSelected) {
-      alert("Please accept the Terms & Conditions");
-      return;
-    }
+    // if (!isSelected) {
+    //   alert("Please accept the Terms & Conditions");
+    //   return;
+    // }
     if (values.password !== values.confirmPassword) {
       console.error("Passwords do not match");
       return;
@@ -218,6 +218,7 @@ const SignUp = () => {
                   backgroundColor: "#EF5DA8",
                   borderRadius: 12,
                   width: 150,
+                  marginTop: 20,
                 }}
                 onPress={() => {
                   handleSignUp(values);

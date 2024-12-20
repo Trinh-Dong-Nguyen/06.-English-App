@@ -59,8 +59,8 @@ const Home = () => {
     fetchCourseCategories();
     fetchRecommendationCourses();
   }, []);
-  console.log(recommendationCourses);
-  
+ 
+ 
 
   return (
     <SafeAreaView>
@@ -69,7 +69,7 @@ const Home = () => {
         style={{
           padding: 10,
         }}
-        className="flex flex-col gap-4"
+        className="flex flex-col gap-4 pb-20"
       >
         <View className="welcome-container w-3/4 flex flex-row items-center gap-1">
           <Image

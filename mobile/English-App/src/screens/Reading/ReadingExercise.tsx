@@ -8,6 +8,7 @@ import SelectionFormat from "../../components/SelectionFormat/SelectionFormat";
 import { SafeAreaView } from "react-native-safe-area-context";
 import HtmlReader from "../../components/HtmlReader";
 import BottomNavigation from '../../components/QuestionNavigation';
+import { ActivityIndicator } from "react-native-paper";
 
 
 type ReadingExerciseProps = {
@@ -84,7 +85,7 @@ export default function ReadingExercise({ scrollRef }: ReadingExerciseProps) {
   const questionGroups = section ? section.questionGroups : [];
 
   if (!section) {
-    return <Text>Loading...</Text>;
+    return <ActivityIndicator size={"large"}  />
   }
 
   return (

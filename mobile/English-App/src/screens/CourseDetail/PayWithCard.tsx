@@ -48,6 +48,7 @@ export default function PayWithCard() {
             <Text className="text-lg font-semibold">Card Information</Text>
             <TextInput
               placeholder="Card Number"
+              inputMode="numeric"
               style={{
                 width: "100%",
                 borderWidth: 1,

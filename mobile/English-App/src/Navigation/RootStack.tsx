@@ -23,6 +23,8 @@ import SplashScreen from "../screens/Splash/SplashScreen";
 import CheckKey from "../screens/CourseDetail/CheckKey";
 import DetailGrammar from "../screens/Grammar/DetailGrammar";
 import SectionRoot from "../screens/SectionRoot";
+import SpeakingExercise from "../components/Speaking.tsx";
+import WritingExercise from "../screens/Writing/WritingExercise";
 
 export default function RootStack() {
   const Stack = createStackNavigator();
@@ -108,6 +110,12 @@ export default function RootStack() {
         headerShown: false,
       }}
     />
+      <Stack.Screen name="Speaking" component={SpeakingExercise} />
+      <Stack.Screen name='Writing' component={WritingExercise} />
+      
+     
+     
+    
     </Stack.Navigator>
   );
 }

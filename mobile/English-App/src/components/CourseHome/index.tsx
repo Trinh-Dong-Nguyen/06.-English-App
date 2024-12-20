@@ -24,6 +24,7 @@ import {
   CourseScreenRouteProp,
 } from "../../type";
 import More from "./More";
+import { ActivityIndicator } from "react-native-paper";
 
 const { height } = Dimensions.get("window");
 
@@ -102,9 +103,15 @@ export default function CourseViewer() {
       case "READING":
         navigation.navigate("Reading", { sectionID: section.id });
         break;
-        case 'ROOT':
-          navigation.navigate('SectionRoot', { sectionID: section.id });
-          break;
+      case "ROOT":
+        navigation.navigate("SectionRoot", { sectionID: section.id });
+        break;
+      case "SPEAKING":
+        navigation.navigate("Speaking", { sectionID: section.id });
+        break;
+      case "WRITING":
+        navigation.navigate("Writing", { sectionID: section.id });
+        break;
 
       default:
         break;
@@ -126,6 +133,14 @@ export default function CourseViewer() {
   //     );
   //   }
   // };
+
+  if (lessons.length === 0) {
+    return (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <ActivityIndicator size="large" />
+      </View>
+    );
+  }
 
   return (
     <View style={styles.container}>
@@ -193,6 +208,7 @@ export default function CourseViewer() {
         contentContainerStyle={styles.scrollViewContent}
       >
         {activeTab === "lessons" &&
+          lessons.length > 0 &&
           lessons.map((lesson, lessonIndex) => (
             <View key={lessonIndex} style={styles.lessonContainer}>
               <Text style={styles.lessonTitle}>{lesson.name}</Text>

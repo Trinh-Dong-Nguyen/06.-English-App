@@ -42,8 +42,8 @@ export default function CourseCard({ course }: { course: Course }) {
         <Text className="text-xs text-black">{course.ratingCount}</Text>
       </View>
       <View className="flex flex-row gap-1 items-start">
-        <Text className="text-xs text-black">đ500.000</Text>
-        <Text className="text-[10px] text-gray-500 line-through">đ800.000</Text>
+        <Text className="text-xs text-black">Price: {course.price}</Text>
+        {/* <Text className="text-[10px] text-gray-500 line-through">đ800.000</Text> */}
       </View>
     </TouchableOpacity>
   );

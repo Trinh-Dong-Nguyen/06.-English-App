@@ -25,6 +25,8 @@ export type RootStackParamList = {
   Validation: { courseBuyingId: string };
   BottomTabsNavigator: undefined;
   SectionRoot: { sectionID: string };
+  Speaking: { sectionID: string };
+  Writing: { sectionID: string };
 };
 export type SplashScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
