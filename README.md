@@ -4,6 +4,14 @@ Project: English Vocabulary Learning App
 Branch Naming and Workflow
 --------------------------
 
+### Productions:
+
+*    **Web**: https://engdigo.loingtan.id.vn
+*    **Docs**: https://api.engdigo.loingtan.id.vn/docs
+
+
+
+
 We follow a structured branching strategy to ensure smooth collaboration and avoid conflicts. Below are the branch naming conventions for different parts of the project:
 
 ### Main Branches:
