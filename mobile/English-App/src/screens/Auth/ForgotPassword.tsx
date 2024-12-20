@@ -1,4 +1,11 @@
-import { View, Text, ImageBackground, Image, TextInput } from "react-native";
+import {
+  View,
+  Text,
+  ImageBackground,
+  Image,
+  TextInput,
+  Alert,
+} from "react-native";
 import React from "react";
 import { Button } from "@rneui/themed";
 import { Formik } from "formik";
@@ -26,10 +33,12 @@ const ForgotPassword = () => {
           isConfirmSignUp: false,
         });
       } else {
-        console.error(res.message);
+        // console.error(res.message);
+        Alert.alert("Failed to reset password", res.message);
       }
     } catch (err) {
-      console.error(err);
+      // console.error(err);
+      Alert.alert("Failed to reset password", "An error occurred.");
     }
   };
   return (

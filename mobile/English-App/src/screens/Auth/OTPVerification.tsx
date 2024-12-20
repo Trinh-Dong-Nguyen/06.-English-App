@@ -1,5 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
-import { View, Text, ImageBackground, Image, TextInput } from "react-native";
+import {
+  View,
+  Text,
+  ImageBackground,
+  Image,
+  TextInput,
+  Alert,
+} from "react-native";
 import { Button } from "@rneui/themed";
 import { useNavigation, useRoute, RouteProp } from "@react-navigation/native";
 import {
@@ -60,10 +67,11 @@ const OTPVerification = () => {
         if (res.statusCode === 201) {
           authCongratsNav.navigate("AuthCongrats", { isConfirmSignUp: true });
         } else {
-          console.error("Invalid code");
+          Alert.alert("Invalid code", "Please enter the correct code");
         }
       } catch (err) {
-        console.error(err);
+        // console.error(err);
+        Alert.alert("Failed to confirm sign up", "An error occurred");
       }
     } else {
       resetPassNav.navigate("ResetPassword", {
@@ -86,10 +94,12 @@ const OTPVerification = () => {
         setResendMessage("Code has been resent. Please check your email.");
         setCountdown(10);
       } else {
-        console.error("Failed to resend code: ", res.message);
+        // console.error("Failed to resend code: ", res.message);
+        Alert.alert("Failed to resend code", res.message);
       }
     } catch (err) {
-      console.error(err);
+      // console.error(err);
+      Alert.alert("Failed to resend code: ", "An error occurred");
     }
   };
 

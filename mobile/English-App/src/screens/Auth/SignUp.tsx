@@ -5,6 +5,7 @@ import {
   Image,
   TouchableOpacity,
   TextInput,
+  Alert,
 } from "react-native";
 import React, { useState } from "react";
 import { CheckBox, Button } from "@rneui/themed";
@@ -70,10 +71,12 @@ const SignUp = () => {
           isConfirmSignUp: true,
         });
       } else {
-        console.error(res);
+        // console.error(res);
+        Alert.alert(res.message);
       }
     } catch (err) {
-      console.error(err);
+      // console.error(err);
+      Alert.alert("An error occurred.");
     }
   };
   return (
@@ -90,7 +93,7 @@ const SignUp = () => {
           Create an account
         </Text>
         <View className="flex flex-row">
-          <TouchableOpacity>
+          {/* <TouchableOpacity>
             <Image
               source={require("../../../assets/google.png")}
               className="w-[40px] h-[40px] mr-12"
@@ -101,7 +104,7 @@ const SignUp = () => {
               source={require("../../../assets/facebook.png")}
               className="w-[40px] h-[40px]"
             />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
 
         <Formik
@@ -182,7 +185,7 @@ const SignUp = () => {
                 <Text style={{ color: "red" }}>{errors.confirmPassword}</Text>
               )}
 
-              <CheckBox
+              {/* <CheckBox
                 center
                 title={
                   <Text style={{ color: "black" }}>
@@ -204,7 +207,7 @@ const SignUp = () => {
                   backgroundColor: "transparent",
                   borderWidth: 0,
                 }}
-              />
+              /> */}
               <Button
                 title={"Sign Up"}
                 containerStyle={{

@@ -5,6 +5,7 @@ import {
   Image,
   TouchableOpacity,
   TextInput,
+  Alert,
 } from "react-native";
 import React, { useState } from "react";
 import { Button, CheckBox } from "@rneui/themed";
@@ -38,16 +39,18 @@ const Login = () => {
       } else if (
         res.message === "Failed to sign in: Incorrect username or password." // temporary condition because statusCode is not different for cases
       ) {
-        console.error(res.message);
+        // console.error(res.message);
+        Alert.alert("Failed to sign in", "Incorrect username or password.");
       } else {
-        console.error(res.message);
+        // console.error(res.message);
         otpVerifyNav.navigate("OTPVerification", {
           username: values.username,
           isConfirmSignUp: true,
         });
       }
     } catch (err) {
-      console.error(err);
+      // console.error(err);
+      Alert.alert("Failed to sign in", "An error occurred.");
     }
   };
   return (
@@ -64,7 +67,7 @@ const Login = () => {
           Welcome Back
         </Text>
         <View className="flex flex-row">
-          <TouchableOpacity>
+          {/* <TouchableOpacity>
             <Image
               source={require("../../../assets/google.png")}
               className="w-[40px] h-[40px] mr-12"
@@ -75,7 +78,7 @@ const Login = () => {
               source={require("../../../assets/facebook.png")}
               className="w-[40px] h-[40px]"
             />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
 
         <Formik
@@ -119,8 +122,8 @@ const Login = () => {
                 <Text style={{ color: "red" }}>{errors.password}</Text>
               )}
 
-              <View className="flex flex-row justify-between items-center w-[280px]">
-                <CheckBox
+              <View className="flex flex-row justify-end items-center w-[280px]">
+                {/* <CheckBox
                   title="Remember me"
                   checked={rememberMe}
                   onPress={() => setRememberMe(!rememberMe)}
@@ -132,7 +135,7 @@ const Login = () => {
                     color: "#000",
                   }}
                   checkedColor="#EF5DA8"
-                />
+                /> */}
                 <TouchableOpacity
                   onPress={() => navigation.navigate("ForgotPassword")}
                 >
