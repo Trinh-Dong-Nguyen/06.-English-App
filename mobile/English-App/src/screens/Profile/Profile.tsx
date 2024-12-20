@@ -6,6 +6,7 @@ import {
   TouchableWithoutFeedback,
   TouchableOpacity,
   Keyboard,
+  Alert,
 } from "react-native";
 import { Avatar, Icon } from "react-native-elements";
 import InputField from "./InputField";
@@ -21,6 +22,8 @@ import { LoginScreenNavigationProp } from "../../type";
 import * as SecureStore from "expo-secure-store";
 import { User } from "../../models";
 import * as ImagePicker from 'expo-image-picker';
+import * as FileSystem from 'expo-file-system';
+
 const Profile = () => {
   const [profile, setProfile] = useState({
     id: "",
@@ -71,29 +74,79 @@ const Profile = () => {
     try {
       const result = await userService.updateUser(profile);
       if (result.statusCode === 200) {
-        console.log("Profile updated successfully");
+        Alert.alert("Profile updated successfully");
       }
     } catch (error) {
       console.error("Error updating profile:", error);
+      Alert.alert("An error occurred while updating the profile.");
     }
   };
-  const [image, setImage] = useState<string | null>(null);
-  
   const pickImage = async () => {
-    // No permissions request is necessary for launching the image library
-    let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
-      allowsEditing: true,
-      aspect: [4, 3],
-      quality: 1,
-    });
+    try {
+      let result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.All,
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
+      });
 
-    console.log(result);
+      if (!result.canceled) {
+        let uri = result.assets[0].uri;
+        // Fix URI for iOS (replace file:// with /private)
+        // if (uri.startsWith('file://')) {
+        //   uri = uri.replace('file://', '/private');
+        // }
+        // const fileName = uri.split('/').pop();
 
-    if (!result.canceled) {
-      setImage(result.assets[0].uri);
+        // if (!fileName) {
+        //   Alert.alert("Failed to get file name");
+        //   return;
+        // }
+
+        // if (result.assets[0].mimeType) {
+        //   const fileExtension = fileName.split('.').pop();
+        //   if (!fileExtension) {
+        //     Alert.alert("Failed to get file extension");
+        //     return;
+        //   }
+        //   const response = await userService.getImageUrl(result.assets[0].mimeType, fileExtension);
+
+        //   const base64Data = await FileSystem.readAsStringAsync(uri, {
+        //     encoding: FileSystem.EncodingType.Base64,
+        //   });
+
+        //   console.log('Base64 Image Data:', base64Data);
+
+        //   const url = response.data.preSignedUrl;
+        //   const key = response.data.key;
+        //   const uploadResponse = await fetch(url, {
+        //     method: 'PUT',
+        //     headers: {
+        //       'Content-Type': 'multipart/form-data',
+        //     },
+        //     body: base64Data,
+        //   });
+        //   console.log(uploadResponse);
+        //   if (uploadResponse.status === 200) {
+        //     Alert.alert("Image uploaded successfully");
+        //     console.log(key);
+        //     setProfile((prev) => ({ ...prev, avatarURL: key }));
+        //   } else {
+        //     console.log(uploadResponse);
+        //     Alert.alert("Failed to upload image");
+        //   }
+        Alert.alert("Image uploaded successfully");
+        setProfile((prev) => ({ ...prev, avatarURL: uri }));
+      } else {
+        Alert.alert("Failed to get image MIME type");
+        return;
+      }
+    } catch (error) {
+      console.error("Error in pickImage:", error);
+      Alert.alert("An error occurred while uploading the image.");
     }
   };
+
   const handleLogout = async () => {
     await SecureStore.deleteItemAsync("accessToken");
     await SecureStore.deleteItemAsync("refreshToken");
@@ -107,9 +160,10 @@ const Profile = () => {
         <View className="flex flex-col justify-center items-center">
           <Avatar
             source={
-              profile?.avatarURL
-                ? { uri: profile.avatarURL }
-                : require("../../../assets/avatar.jpg")
+              // profile?.avatarURL
+              //   ? { uri: profile.avatarURL }
+              //   : 
+              require("../../../assets/avatar.jpg")
             }
             size="xlarge"
             rounded
@@ -125,8 +179,8 @@ const Profile = () => {
             <Text className="text-black ml-5 self-start text-base font-semibold leading-none">
               BirthDate
             </Text>
-            <TouchableOpacity onPress={() => setShow(true)} className="flex ">
-              <View className="bg-white rounded-[15px] shadow p-3">
+            <TouchableOpacity onPress={() => setShow(true)} className="flex flex-row w-2/3 justify-center items-center ">
+              <View className="bg-white w-2/3  rounded-[15px] shadow p-3">
                 <Text className="text-black ml-[2px] text-base font-semibold leading-none">
                   {new Date(profile.birthDate).toLocaleDateString("vi-VN", {
                     year: "numeric",
@@ -174,6 +228,7 @@ const Profile = () => {
               onPress={() => {
                 //handleUpdateProfile({ ...profile, birthDate: new Date(profile.birthDate) });
                 console.log(profile);
+                handleUpdateProfile({ ...profile, birthDate: new Date(profile.birthDate) });
               }}
             >
               <Icon
@@ -202,5 +257,4 @@ const Profile = () => {
     </SafeAreaView>
   );
 };
-
 export default Profile;

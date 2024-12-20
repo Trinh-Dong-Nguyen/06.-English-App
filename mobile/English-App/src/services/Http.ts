@@ -107,6 +107,9 @@ class Http {
   async put(endpoint: string, data: object) {
     return this.requestWithRetry("PUT", endpoint, data);
   }
+  async patch(endpoint: string, data: object) {
+    return this.requestWithRetry("PATCH", endpoint, data);
+  }
 
   async delete(endpoint: string) {
     return this.requestWithRetry("DELETE", endpoint);

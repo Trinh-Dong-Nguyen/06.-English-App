@@ -10,6 +10,7 @@ import {
   HTMLContentModel,
 } from "react-native-render-html";
 import { RootStackParamList } from "../../type";
+import { ActivityIndicator } from "react-native-paper";
 
 type DetailGrammarRouteProp = RouteProp<RootStackParamList, "GrammarDetail">;
 
@@ -74,7 +75,10 @@ export default function DetailGrammar() {
           ignoredDomTags={[]} 
         />
       ) : (
-        <Text>Loading...</Text>
+        <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+
+        <ActivityIndicator size={"large"}  />
+        </View>
       )}
     </ScrollView>
   );

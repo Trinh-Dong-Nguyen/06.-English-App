@@ -11,7 +11,7 @@ class UserService {
   }
   async updateUser(data: object) {
     try {
-      const response = await http.put("user/update", data);
+      const response = await http.patch("user/update", data);
       return response;
     } catch (error: any) {
       throw new Error(`HTTP error! status: ${error.message}`);
