@@ -20,6 +20,7 @@ import { CreateWriting } from "@/pages/App/TeacherPage/LessonPage/CreateWriting"
 import CourseList from "@/pages/App/TeacherPage/CoursePage/List"
 import CourseCreate from "@/pages/App/TeacherPage/CoursePage/Add"
 import CourseAddLessons from "@/pages/App/TeacherPage/CoursePage/Add/Lessons"
+import CoursePreview from "@/pages/App/TeacherPage/CoursePage/Preview"
 import CourseAddReadingSection from "@/pages/App/TeacherPage/CoursePage/Add/ReadingSection"
 import CourseAddWritingSection from "@/pages/App/TeacherPage/CoursePage/Add/WritingSection"
 import CourseAddListeningSection from "@/pages/App/TeacherPage/CoursePage/Add/ListeningSection"
@@ -110,6 +111,11 @@ const protectedRoutes = [
   {
     path: teacherRoutes.Course.Lesson,
     component: <CourseAddLessons></CourseAddLessons>,
+    layout: TeacherLayout,
+  },
+  {
+    path: teacherRoutes.Course.Preview,
+    component: <CoursePreview></CoursePreview>,
     layout: TeacherLayout,
   },
   {

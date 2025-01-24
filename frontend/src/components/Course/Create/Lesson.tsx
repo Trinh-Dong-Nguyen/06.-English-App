@@ -4,7 +4,7 @@ import { useCallback, useRef, useState } from "react"
 import { useNavigate } from "react-router"
 import get from "lodash/get"
 
-const CourseCreateLesson = () => {
+const CourseCreateLesson = ({ index, onRemove }: any) => {
   const navigate = useNavigate()
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -44,12 +44,16 @@ const CourseCreateLesson = () => {
     video.src = URL.createObjectURL(file)
   }
 
+  function handleRemove() {
+    onRemove()
+  }
+
   return (
     <div className="my-5 rounded-sm border border-zinc-200 p-3">
       <div>
         <div className="mb-5 flex gap-4">
           <div className="text-xl">
-            <span className="font-bold text-blue-700">Lesson 1:</span>
+            <span className="font-bold text-blue-700">Lesson { index + 1 }:</span>
             <span> Introduction</span>
           </div>
           <Button
@@ -69,7 +73,10 @@ const CourseCreateLesson = () => {
           </Button>
           <Button variant="surface" size="2" radius="full" className="cursor-pointer" color="pink">
             <Logs></Logs>
-            Add materials
+            Grammar
+          </Button>
+          <Button variant="surface" size="2" radius="full" className="cursor-pointer ml-auto" color="red" onClick={handleRemove}>
+            <Trash></Trash>
           </Button>
         </div>
         {file && (

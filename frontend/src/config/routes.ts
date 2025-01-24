@@ -35,6 +35,7 @@ export const teacherRoutes = {
     ListeningSection: "/course/:id/:mode/listening-section",
     Edit: "/course/:id/edit",
     Detail: "/course/:id",
+    Preview: "/course/:id/preview"
   },
   Lesson: {
     Base: "/course/:courseId/lesson",
